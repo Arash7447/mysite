@@ -1,4 +1,4 @@
-{%load static%}
+{% load static %}
 <!DOCTYPE html>
 <html lang="zxx" class="no-js">
 
@@ -6,7 +6,7 @@
     <!-- Mobile Specific Meta -->
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Favicon-->
-    <link rel="shortcut icon" href="{% static 'img/fav.png">
+    <link rel="shortcut icon" href="{% static 'img/fav.png'%}">
     <!-- Author Meta -->
     <meta name="author" content="colorlib">
     <!-- Meta Description -->
@@ -31,7 +31,7 @@
     <link rel="stylesheet" href="{% static 'css/animate.min.css'%}">
     <link rel="stylesheet" href="{% static 'css/owl.carousel.css'%}">
     <link rel="stylesheet" href="{% static 'css/main.css'%}">
-</head>'%}
+</head>
 
 <body>
     <header id="header">
@@ -58,16 +58,16 @@
         <div class="container main-menu">
             <div class="row align-items-center justify-content-between d-flex">
                 <div id="logo">
-                    <a href="index.html"><img src="{% static 'img/logo.png" alt="" title="" /></a>
+                    <a href="index.html"><img src="{% static 'img/logo.png'%}" alt="" title="" /></a>
                 </div>
                 <nav id="nav-menu-container">
                     <ul class="nav-menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html">About</a></li>
+                        <li><a href="{% url 'website:index' %}">Home</a></li>
+                        <li><a href="{% url 'website:about' %}">About</a></li>
                         <li class="menu-has-children"><a href="">Blog</a>
                             <ul>
-                                <li><a href="blog-home.html">Blog Home</a></li>
-                                <li><a href="blog-single.html">Blog Single</a></li>
+                                <li><a href="{% url 'blog:index' %}">Blog Home</a></li>
+                                <li><a href="{% url 'blog:single' %}">Blog Single</a></li>
                             </ul>
                         </li>
                         <li class="menu-has-children"><a href="">Pages</a>
@@ -81,7 +81,7 @@
                                 </li>
                             </ul>
                         </li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="{% url 'website:contact' %}">Contact</a></li>
                     </ul>
                 </nav><!-- #nav-menu-container -->
             </div>
@@ -92,7 +92,7 @@
 
 
     {% endblock %}
-    !-- start footer Area -->
+    <!-- start footer Area -->
     <footer class="footer-area section-gap">
         <div class="container">
 
