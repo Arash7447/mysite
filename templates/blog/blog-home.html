@@ -35,8 +35,8 @@
 						<div class="overlay overlay-bg"></div>
 						<a href="#" target="_blank">
 							<div class="thumb">
-								<img class="content-image img-fluid d-block mx-auto" src="{% static 'img/blog/cat-widget1.jpg' %}"
-									alt="">
+								<img class="content-image img-fluid d-block mx-auto"
+									src="{% static 'img/blog/cat-widget1.jpg' %}" alt="">
 							</div>
 							<div class="content-details">
 								<h4 class="content-title mx-auto text-uppercase">Social life</h4>
@@ -53,8 +53,8 @@
 						<div class="overlay overlay-bg"></div>
 						<a href="#" target="_blank">
 							<div class="thumb">
-								<img class="content-image img-fluid d-block mx-auto" src="{% static 'img/blog/cat-widget2.jpg' %}"
-									alt="">
+								<img class="content-image img-fluid d-block mx-auto"
+									src="{% static 'img/blog/cat-widget2.jpg' %}" alt="">
 							</div>
 							<div class="content-details">
 								<h4 class="content-title mx-auto text-uppercase">Politics</h4>
@@ -71,8 +71,8 @@
 						<div class="overlay overlay-bg"></div>
 						<a href="#" target="_blank">
 							<div class="thumb">
-								<img class="content-image img-fluid d-block mx-auto" src="{% static 'img/blog/cat-widget3.jpg' %}"
-									alt="">
+								<img class="content-image img-fluid d-block mx-auto"
+									src="{% static 'img/blog/cat-widget3.jpg' %}" alt="">
 							</div>
 							<div class="content-details">
 								<h4 class="content-title mx-auto text-uppercase">Food</h4>
@@ -97,25 +97,25 @@
 				<div class="single-post row">
 					<div class="col-lg-3  col-md-3 meta-details">
 						<ul class="tags">
-							<li><a href="#">Food,</a></li>
-							<li><a href="#">Technology,</a></li>
-							<li><a href="#">Politics,</a></li>
-							<li><a href="#">Lifestyle</a></li>
+							{{post.category.all|join:", "}}
 						</ul>
 						<div class="user-details row">
-							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a> <span
-									class="lnr lnr-user"></span></p>
+							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.get_full_name}}</a>
+								<span class="lnr lnr-user"></span></p>
 							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_view}} views</a> <span
 									class="lnr lnr-eye"></span></p>
 							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span
 									class="lnr lnr-bubble"></span></p>
+
+
+
 						</div>
 					</div>
 					<div class="col-lg-9 col-md-9 ">
 						<div class="feature-img">
-							<img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
+							<img class="img-fluid" src="{{post.image.url}}" alt="">
 						</div>
 						<a class="posts-title" href="{% url 'blog:single' pid=post.id%}">
 							<h3>{{post.title}}</h3>
