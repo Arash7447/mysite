@@ -11,8 +11,8 @@ def blog_view(request) :
 
 def blog_single(request, pid):
     post = get_object_or_404(Post, pk=pid, status=1, published_date__lte=timezone.now())
-    next_post = Post.objects.filter(id__gt=post.id).order_by('id').first()
-    previous_post = Post.objects.filter(id__lt=post.id).order_by('-id').first()
+    next_post = Post.objects.filter(id__gt=post.id, status = 1).order_by('id').first()
+    previous_post = Post.objects.filter(id__lt=post.id, status = 1).order_by('-id').first()
     context = {'post': post, 'counted_view': post.counted_view, 'next_post': next_post, 'previous_post': previous_post}
     post.counted_view += 1
     post.save()
