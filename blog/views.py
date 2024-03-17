@@ -9,11 +9,14 @@ def blog_view(request) :
     context = {'posts': posts}
     return render(request, "blog/blog-home.html", context)
 
-def blog_single(request,pid) :
-    post = get_object_or_404(Post, pk=pid, status = 1,published_date__lte = timezone.now())
-    context = {'post': post, 'counted_view': post.counted_view}
+def blog_single(request, pid):
+    post = get_object_or_404(Post, pk=pid, status=1, published_date__lte=timezone.now())
+    next_post = Post.objects.filter(id__gt=post.id).order_by('id').first()
+    previous_post = Post.objects.filter(id__lt=post.id).order_by('-id').first()
+    context = {'post': post, 'counted_view': post.counted_view, 'next_post': next_post, 'previous_post': previous_post}
     post.counted_view += 1
     post.save()
     return render(request, "blog/blog-single.html", context)
+
 
     
