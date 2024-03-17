@@ -72,31 +72,38 @@
 						<div
 							class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
 							<div class="thumb">
-								<a href="#"><img class="img-fluid" src="{% static 'img/blog/prev.jpg' %}" alt=""></a>
+								<a href="#"><img class="img-fluid" src="{{ previous_post.image.url }}" alt="{{ previous_post.title }}" width="120px"></a>
 							</div>
 							<div class="arrow">
-								<a href="#"><span class="lnr text-white lnr-arrow-left"></span></a>
+								<a href="/blog/{{ previous_post.id }}/"><span class="lnr text-white lnr-arrow-left"></span></a>
 							</div>
 							<div class="detials">
+								{% if previous_post %}
 								<p>Prev Post</p>
-								<a href="#">
-									<h4>Space The Final Frontier</h4>
+								<a href="/blog/{{ previous_post.id }}/">
+									<h4>{{ previous_post.title }}</h4>
 								</a>
+								{% else %}
+								{% endif %}
+							
 							</div>
 						</div>
 						<div
 							class="col-lg-6 col-md-6 col-12 nav-right flex-row d-flex justify-content-end align-items-center">
 							<div class="detials">
+								{% if next_post %}	
 								<p>Next Post</p>
-								<a href="#">
-									<h4>Telescopes 101</h4>
+								<a href="/blog/{{ next_post.id }}/">
+									<h4>{{ next_post.title }}</h4>
 								</a>
+								{% else %}
+								{% endif %}	
 							</div>
 							<div class="arrow">
-								<a href="#"><span class="lnr text-white lnr-arrow-right"></span></a>
+								<a href="/blog/{{ next_post.id }}/"><span class="lnr text-white lnr-arrow-right"></span></a>
 							</div>
 							<div class="thumb">
-								<a href="#"><img class="img-fluid" src="{% static 'img/blog/next.jpg' %}" alt=""></a>
+								<a href="/blog/{{ next_post.id }}/"><img class="img-fluid" src="{{ next_post.image.url }}" alt="{{ next_post.title }}" width="120px"></a>
 							</div>
 						</div>
 					</div>
