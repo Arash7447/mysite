@@ -125,9 +125,9 @@
 							<h3>{{post.title}}</h3>
 						</a>
 						<p class="excert">
-							{{post.content|truncatechars:30}}
+							{{post.excerpt}}
 						</p>
-						<a href="#" class="primary-btn">View More</a>
+						<a href={{post.id}} class="primary-btn">View More</a>
 					</div>
 				</div>
 				{% endfor%}

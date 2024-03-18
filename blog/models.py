@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import truncatewords
+
 # Create your models here.
 
 class Category(models.Model):
@@ -13,7 +15,7 @@ class Category(models.Model):
 class Post (models.Model) :
     image = models.ImageField(upload_to = 'blog/',default = 'blog/default.jpg')
     author = models.ForeignKey(User,on_delete=models.SET_NULL,null=True)
-    title = models.CharField (max_length = 255)
+    title = models.CharField (max_length = 200)
     content = models.TextField ()
     # Tag
     category = models.ManyToManyField (Category)
@@ -33,7 +35,7 @@ class Post (models.Model) :
         return "{} - {}".format(self.title, self.id) 
 
 
-    def snippets(self) :
-        return self.content[:100] + '...'
+    def excerpt(self) :
+        return truncatewords(self.content,20)
 
 
