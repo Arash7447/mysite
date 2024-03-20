@@ -9,7 +9,7 @@ def blog_view(request) :
     context = {'posts': posts}
     return render(request, "blog/blog-home.html", context)
 
-def blog_single(request, pid):
+def blog_single(request, pid) :
     post = get_object_or_404(Post, pk=pid, status=1, published_date__lte=timezone.now())
     next_post = Post.objects.filter(id__gt=post.id, status=1, published_date__lte=timezone.now()).order_by('id', '-published_date').first()
     previous_post = Post.objects.filter(id__lt=post.id, status=1, published_date__lte=timezone.now()).order_by('-id', '-published_date').first()
@@ -18,5 +18,10 @@ def blog_single(request, pid):
     post.save()
     return render(request, "blog/blog-single.html", context)
 
+def blog_category(request, cat_name) :
+    posts = Post.objects.filter(status = 1)
+    posts = posts.filter(category__name=cat_name)
+    context = {'posts': posts} 
+    return render(request, "blog/blog-home.html",context)
 
     
