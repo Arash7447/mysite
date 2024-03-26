@@ -1,0 +1,47 @@
+{% load static %}
+{% load blog_tags %}
+
+<section class="recent-blog-area section-gap">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="menu-content pb-60 col-lg-9">
+                <div class="title text-center">
+                    <h1 class="mb-10">Latest from Our Blog</h1>
+                    <p>With the exception of Nietzsche, no other madman has contributed so much to human sanity as has.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for post in latest_posts %}
+            <div class="col-md-4">
+                <div class="active-recent-blog-carusel">
+                    <div class="single-recent-blog-post item">
+                        <div class="thumb">
+                            <img class="img-fluid" src="{{ post.image.url }}" alt="">
+                        </div>
+                        <div class="details">
+                            <div class="tags">
+                                <ul>
+                                    <li>
+                                        <a href="#">Travel</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Life Style</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <a href="#">
+                                <h4 class="title">{{ post.title }}</h4>
+                            </a>
+                            <p>
+                                {{ post.content|truncatewords:5 }}
+                            </p>
+                            <h6 class="date">{{ post.published_date }}</h6>
+                        </div>
+                    </div>    
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
