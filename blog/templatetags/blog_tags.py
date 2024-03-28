@@ -41,5 +41,6 @@ def postcategories() :
 
 def latest_posts():
     posts = Post.objects.order_by('-published_date')[:6]
-    return {'latest_posts': posts}
+    categories = Category.objects.all()
+    return {'latest_posts': posts, 'categories':categories}
 
