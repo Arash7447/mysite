@@ -12,36 +12,28 @@
             </div>
         </div>
         <div class="row">
-            {% for post in latest_posts %}
-            <div class="col-md-4">
-                <div class="active-recent-blog-carusel">
+            <div class="active-recent-blog-carusel">
+                {% for post in latest_posts %}
                     <div class="single-recent-blog-post item">
                         <div class="thumb">
-                            <img class="img-fluid" src="{{ post.image.url }}" alt="">
+                            <img class="img-fluid" src="{{ post.image.url }}" alt="" style="width: 420px; height: 250px; ">
                         </div>
                         <div class="details">
                             <div class="tags">
                                 <ul>
-                                    <li>
-                                        <a href="#">Travel</a>
-                                    </li>
-                                    <li>
-                                        <a href="#">Life Style</a>
-                                    </li>
+                                    <li><a href="{% url 'blog:single' pid=post.id%}">Travel</a></li>
+                                    <li><a href="{% url 'blog:single' pid=post.id%}">Life Style</a></li>
                                 </ul>
                             </div>
-                            <a href="#">
+                            <a href="{% url 'blog:single' pid=post.id%}">
                                 <h4 class="title">{{ post.title }}</h4>
                             </a>
-                            <p>
-                                {{ post.content|truncatewords:5 }}
-                            </p>
+                            <p>{{ post.content|truncatewords:5 }}</p>
                             <h6 class="date">{{ post.published_date }}</h6>
                         </div>
-                    </div>    
-                </div>
+                    </div>
+                {% endfor %}
             </div>
-            {% endfor %}
         </div>
-    </div>
+        
 </section>
