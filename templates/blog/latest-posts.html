@@ -22,8 +22,8 @@
                             <div class="tags">
                                 <ul>
                                     
-                                    {% for category in categories %}
-                                    <a href="{% url 'blog:category' cat_name=category.name %}">{{ category.name }}</a>
+                                    {% for cat in post.category.all %}
+                                    <a href="{% url 'blog:category' cat_name=cat.name %}">{{ cat.name }}</a>{% if not forloop.last %},{% endif %}
                                     {% endfor %}
 
                                     
