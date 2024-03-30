@@ -8,6 +8,8 @@ class NameForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea)
 
 class ContactForm (forms.ModelForm) :
+
+    subject = forms.CharField(required=False)
     
     class Meta:
         model = Contact
