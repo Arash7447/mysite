@@ -31,9 +31,12 @@ def newsletter_view(request) :
         form = NewsletterForm(request.POST)
         if form.is_valid():
             form.save()
+            messages.add_message(request,messages.SUCCESS,'your email address submited successfully .')
             return HttpResponseRedirect('/')
 
     else :
+        messages.add_message(request,messages.ERROR,'your email address did not submited successfully .')
         return HttpResponseRedirect('/')
 
 
+   

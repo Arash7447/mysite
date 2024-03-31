@@ -22,3 +22,10 @@ class Newsletter(models.Model):
 
     def __str__ (self) :
         return self.email
+
+
+class Newsletterr(models.Model):
+    email = models.EmailField()
+
+    def __str__(self) :
+        return self.email
