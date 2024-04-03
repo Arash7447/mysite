@@ -42,20 +42,27 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'debug_toolbar',
     'taggit',
+    'django_summernote',
     'django.contrib.sitemaps',
     'robots',
     'website.apps.WebsiteConfig',
     'blog' 
 ]
 
-# sites framework
+# sites framework :
 
 SITE_ID = 2
 
-# robots
+# robots :
 
 ROBOTS_USE_HOST = True
 ROBOTS_USE_SITEMAP = True
+
+# summernote configs :
+
+SUMMERNOTE_THEME = 'bs4'
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
