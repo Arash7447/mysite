@@ -48,7 +48,8 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
     'robots',
     'website.apps.WebsiteConfig',
-    'blog' 
+    'blog',
+    'accounts'
 ]
 
 # sites framework :

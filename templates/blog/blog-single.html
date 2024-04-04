@@ -122,8 +122,8 @@
 				
 				<div class="comments-area">
 					<h4>{{comments|length}} Comments :</h4>
-						
-				<div class="comment-list"></div>
+								
+					<div class="comment-list"></div>
 					{% for comment in comments %}
 						
 						<div class="single-comment justify-content-between d-flex">
@@ -138,18 +138,18 @@
 										{{comment.message}}
 									</p>
 								</div>
-								</div>
+							</div>
 								<!--
 								<div class="reply-btn">
 									<a href="" class="btn-reply text-uppercase">reply</a>
 								</div>
 								-->
-						</div>
-						{% empty %}
-						<p>No Comments Here </p>
-					{% endfor %}
+					</div>
+				{% empty %}
+					<p>No Comments Here </p>
+				{% endfor %}
 				</div>
-				</div>
+					</div>
 				<div class="comment-form">
 					<h4>Leave a Comment</h4>
 						<form method="post" action="{% url 'blog:single' pid=post.id %}">
