@@ -5,7 +5,9 @@ from django.utils import timezone
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
 from blog.forms import CommentForm
 from django.contrib import messages
+
 # Create your views here.
+
 
 def blog_view(request, **kwargs) :
     posts = Post.objects.filter(status = 1, published_date__lte = timezone.now())
