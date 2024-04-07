@@ -18,7 +18,8 @@ from django.urls import reverse_lazy
 from .forms import *
 # Create your views here.
 
-def login_view(request) :
+
+def login_view(request):
     if request.method == 'POST':
         username_or_email = request.POST['username_or_email']
         password = request.POST['password']
@@ -26,7 +27,8 @@ def login_view(request) :
         if user is not None:
             login(request, user)
             return redirect('/')
-        
+        else:
+            messages.error(request, 'Your username or password is incorrect.')
     return render(request, 'accounts/login.html')
 
 
@@ -50,7 +52,7 @@ def signup_view(request):
     else:
           return redirect('/')
     
-
+# classes are for reset password section:
 
 class PasswordReset(PasswordResetView):
     template_name="registration/password_reset_form.html"

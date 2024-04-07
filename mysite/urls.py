@@ -52,6 +52,8 @@ urlpatterns = [
 
     path('accounts/', include('accounts.urls')),
 
+    path('accounts/', include('accounts.urls', namespace='registration')),
+
 ] 
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
