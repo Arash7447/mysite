@@ -6,7 +6,16 @@ from accounts.backends import EmailOrUsernameModelBackend
 from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib import messages
+from django.contrib import auth
+from django.contrib.auth.models import User
+from django.contrib.auth.views import (PasswordChangeView,
+                                       PasswordResetCompleteView,
+                                       PasswordResetConfirmView,
+                                       PasswordResetDoneView,
+                                       PasswordResetView)
 
+from django.urls import reverse_lazy
+from .forms import *
 # Create your views here.
 
 def login_view(request) :
@@ -27,19 +36,33 @@ def logout_view(request) :
     return redirect('/')
 
 
-def signup_view(request) :
+def signup_view(request):
     if not request.user.is_authenticated:
-        if request.method == 'POST' :
-            form = UserCreationForm(request.POST)
-            if form.is_valid() :
+        if request.method=="POST":
+              form=SignUpForm(request.POST)
+              if form.is_valid():
                 form.save()
-                messages.success(request, 'You signed up successfully ')  
                 return redirect('/')
-            else:
-                for error in form.errors.values():
-                    messages.error(request, error[0])  
-        form = UserCreationForm()
-        context = {'form': form}
-        return render(request,'accounts/signup.html', context)
+        
+        form=SignUpForm()
+        context={'form':form}
+        return render(request,'accounts/signup.html',context)
     else:
-        return redirect('/')
+          return redirect('/')
+    
+
+
+class PasswordReset(PasswordResetView):
+    template_name="registration/password_reset_form.html"
+    success_url=reverse_lazy("registration:password_reset_done")
+
+class PasswordResetDone(PasswordResetDoneView):
+    template_name="registration/password_reset_done.html"
+    success_url=reverse_lazy("registration:password_reset_confirm")
+
+class PasswordResetConfirm(PasswordResetConfirmView):
+    template_name="registration/password_reset_confirm.html"
+    success_url=reverse_lazy("registration:password_reset_complete")
+
+class PasswordResetComplete(PasswordResetCompleteView):
+    template_name="registration/password_reset_complete.html"
