@@ -37,7 +37,7 @@ def signup_view(request) :
                 return redirect('/')
             else:
                 for error in form.errors.values():
-                    messages.error(request, error[0])  # اضافه کردن این خط
+                    messages.error(request, error[0])  
         form = UserCreationForm()
         context = {'form': form}
         return render(request,'accounts/signup.html', context)
