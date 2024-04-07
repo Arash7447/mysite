@@ -5,6 +5,7 @@ from django.urls import reverse
 from accounts.backends import EmailOrUsernameModelBackend
 from django.core.mail import send_mail
 from django.conf import settings
+from django.contrib import messages
 
 # Create your views here.
 
@@ -32,7 +33,11 @@ def signup_view(request) :
             form = UserCreationForm(request.POST)
             if form.is_valid() :
                 form.save()
+                messages.success(request, 'You signed up successfully ')  
                 return redirect('/')
+            else:
+                for error in form.errors.values():
+                    messages.error(request, error[0])  # اضافه کردن این خط
         form = UserCreationForm()
         context = {'form': form}
         return render(request,'accounts/signup.html', context)
