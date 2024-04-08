@@ -56,15 +56,15 @@ def signup_view(request):
 
 class PasswordReset(PasswordResetView):
     template_name="registration/password_reset_form.html"
-    success_url=reverse_lazy("registration:password_reset_done")
+    success_url=reverse_lazy("accounts:password_reset_done")
 
 class PasswordResetDone(PasswordResetDoneView):
     template_name="registration/password_reset_done.html"
-    success_url=reverse_lazy("registration:password_reset_confirm")
+    success_url=reverse_lazy("accounts:password_reset_confirm")
 
 class PasswordResetConfirm(PasswordResetConfirmView):
     template_name="registration/password_reset_confirm.html"
-    success_url=reverse_lazy("registration:password_reset_complete")
+    success_url=reverse_lazy("accounts:password_reset_complete")
 
 class PasswordResetComplete(PasswordResetCompleteView):
     template_name="registration/password_reset_complete.html"

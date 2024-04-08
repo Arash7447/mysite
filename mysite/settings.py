@@ -173,9 +173,14 @@ AUTHENTICATION_BACKENDS = ['accounts.backends.EmailOrUsernameModelBackend']
 # forget password settings
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
-EMAIL_PORT = 2525
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'ghahremania87@gmail.com'
+EMAIL_HOST_PASSWORD = 'acba hlui bikh kqrz'
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'c2a9934033eeb1'
-EMAIL_HOST_PASSWORD = '5d385d97e83af7'
+EMAIL_USE_SSL = False
 
+
+# for checking reset password timeout
+
+PASSWORD_RESET_TIMEOUT = 300  # 5 minutes
