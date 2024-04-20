@@ -144,6 +144,7 @@
 							</a>
 						</li>
 						{% endif %}
+						
 						{% for i in posts.paginator.page_range %}
 						{% if posts.number == i %}
 							<li class="page-item active"><a href="?page={{i}}" class="page-link">{{i}}</a></li>

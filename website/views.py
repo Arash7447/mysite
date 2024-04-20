@@ -3,7 +3,7 @@ from django.http import HttpResponse, JsonResponse,HttpResponseRedirect
 from website.models import Contact
 from website.forms import NameForm, ContactForm, NewsletterForm
 from django.contrib import messages
-
+from django.views import View
 def index_view(request) :
     return render(request, "website/index.html")
 
@@ -41,4 +41,11 @@ def newsletter_view(request) :
         return HttpResponseRedirect('/')
 
 
-   
+
+
+class ComingSoonView(View):
+    def get(self, request, *args, **kwargs):
+        return HttpResponse('<h1> our website will available coming soon :) </h1>')
+
+
+
