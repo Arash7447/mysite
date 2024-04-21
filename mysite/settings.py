@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'robots',
     'website.apps.WebsiteConfig',
     'blog',
-    'accounts'
+    'accounts',
+    'compressor',
 ]
 
 
@@ -69,7 +70,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
-    'website.middleware.ComingSoonMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -165,5 +166,6 @@ EMAIL_USE_SSL = False
 # for checking reset password timeout
 
 PASSWORD_RESET_TIMEOUT = 300  # 5 minutes
+
 
 
